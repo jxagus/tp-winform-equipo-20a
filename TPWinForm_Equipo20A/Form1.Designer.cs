@@ -47,15 +47,15 @@
             // dgvLista
             // 
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Location = new System.Drawing.Point(28, 188);
+            this.dgvLista.Location = new System.Drawing.Point(18, 70);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(511, 195);
+            this.dgvLista.Size = new System.Drawing.Size(645, 195);
             this.dgvLista.TabIndex = 0;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             // 
             // tbBuscar
             // 
-            this.tbBuscar.Location = new System.Drawing.Point(64, 166);
+            this.tbBuscar.Location = new System.Drawing.Point(66, 38);
             this.tbBuscar.Name = "tbBuscar";
             this.tbBuscar.Size = new System.Drawing.Size(108, 20);
             this.tbBuscar.TabIndex = 1;
@@ -64,7 +64,7 @@
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(25, 169);
+            this.lblBuscar.Location = new System.Drawing.Point(17, 41);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(43, 13);
             this.lblBuscar.TabIndex = 2;
@@ -73,7 +73,7 @@
             // cbMarca
             // 
             this.cbMarca.FormattingEnabled = true;
-            this.cbMarca.Location = new System.Drawing.Point(94, 416);
+            this.cbMarca.Location = new System.Drawing.Point(78, 302);
             this.cbMarca.Name = "cbMarca";
             this.cbMarca.Size = new System.Drawing.Size(121, 21);
             this.cbMarca.TabIndex = 3;
@@ -81,7 +81,7 @@
             // cbCategoria
             // 
             this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(94, 389);
+            this.cbCategoria.Location = new System.Drawing.Point(78, 275);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(121, 21);
             this.cbCategoria.TabIndex = 4;
@@ -89,7 +89,7 @@
             // lbCategoria
             // 
             this.lbCategoria.AutoSize = true;
-            this.lbCategoria.Location = new System.Drawing.Point(33, 392);
+            this.lbCategoria.Location = new System.Drawing.Point(17, 278);
             this.lbCategoria.Name = "lbCategoria";
             this.lbCategoria.Size = new System.Drawing.Size(55, 13);
             this.lbCategoria.TabIndex = 5;
@@ -98,7 +98,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(33, 419);
+            this.lblMarca.Location = new System.Drawing.Point(17, 305);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(40, 13);
             this.lblMarca.TabIndex = 6;
@@ -106,7 +106,7 @@
             // 
             // gbImagen
             // 
-            this.gbImagen.Location = new System.Drawing.Point(578, 188);
+            this.gbImagen.Location = new System.Drawing.Point(693, 70);
             this.gbImagen.Name = "gbImagen";
             this.gbImagen.Size = new System.Drawing.Size(246, 195);
             this.gbImagen.TabIndex = 7;
@@ -115,7 +115,7 @@
             // 
             // tbBuscarAvanzado
             // 
-            this.tbBuscarAvanzado.Location = new System.Drawing.Point(237, 416);
+            this.tbBuscarAvanzado.Location = new System.Drawing.Point(329, 275);
             this.tbBuscarAvanzado.Name = "tbBuscarAvanzado";
             this.tbBuscarAvanzado.Size = new System.Drawing.Size(140, 20);
             this.tbBuscarAvanzado.TabIndex = 8;
@@ -123,7 +123,7 @@
             // lblBuscarAvanzado
             // 
             this.lblBuscarAvanzado.AutoSize = true;
-            this.lblBuscarAvanzado.Location = new System.Drawing.Point(234, 392);
+            this.lblBuscarAvanzado.Location = new System.Drawing.Point(218, 278);
             this.lblBuscarAvanzado.Name = "lblBuscarAvanzado";
             this.lblBuscarAvanzado.Size = new System.Drawing.Size(105, 13);
             this.lblBuscarAvanzado.TabIndex = 9;
@@ -131,7 +131,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(281, 159);
+            this.btnAgregar.Location = new System.Drawing.Point(405, 41);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(96, 23);
             this.btnAgregar.TabIndex = 10;
@@ -140,7 +140,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(464, 159);
+            this.btnEliminar.Location = new System.Drawing.Point(588, 41);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 11;
@@ -149,7 +149,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(383, 159);
+            this.btnModificar.Location = new System.Drawing.Point(507, 41);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 12;
@@ -160,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 453);
+            this.ClientSize = new System.Drawing.Size(967, 376);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);

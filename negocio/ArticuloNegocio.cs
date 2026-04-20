@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using dominio;
 
 namespace negocio
@@ -16,7 +19,14 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT Codigo, Nombre, Descripcion, Precio FROM ARTICULOS");
+                datos.setearConsulta("SELECT A.Codigo, A.Nombre, A.Descripcion, A.Precio, " +
+                             "M.Descripcion AS DescripcionMarca, " +
+                             "C.Descripcion AS DescripcionCategoria, " +
+                             "I.ImagenUrl " +
+                             "FROM ARTICULOS A, MARCAS M, CATEGORIAS C, IMAGENES I " +
+                             "WHERE A.IdMarca = M.Id " +
+                             "AND A.IdCategoria = C.Id " +
+                             "AND A.Id = I.IdArticulo");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -27,6 +37,13 @@ namespace negocio
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Precio = Convert.ToDecimal(datos.Lector["Precio"]);
+                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
+                    aux.Marca = new Marca();
+                    aux.Marca.Descripcion = (string)datos.Lector["DescripcionMarca"];
+
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Descripcion = (string)datos.Lector["DescripcionCategoria"];
 
                     lista.Add(aux);
                 }
