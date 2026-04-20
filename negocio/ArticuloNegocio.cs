@@ -13,30 +13,28 @@ namespace negocio
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
+
             try
             {
-                datos.setearConsulta("select Codigo, Nombre, Descripcion, Precio  from ARTICULOS");
-                datos.ejecutarLectura();    
+                datos.setearConsulta("SELECT Codigo, Nombre, Descripcion, Precio FROM ARTICULOS");
+                datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.Precio = (float)datos.Lector["Precio"];
-                    //aux.Marca = (string)datos.Lector["Marca"];
-                    //aux.Categoria = (string)datos.Lector["Categoria"];
-                    //aux.Imagen = (string)datos.Lector["ImagenUrl"];
+                    aux.Precio = Convert.ToDecimal(datos.Lector["Precio"]);
 
                     lista.Add(aux);
                 }
-                return lista;
 
+                return lista;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -46,4 +44,3 @@ namespace negocio
         }
     }
 }
-

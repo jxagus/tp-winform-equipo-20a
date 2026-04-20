@@ -12,9 +12,9 @@ namespace dominio
     {
         public string Codigo { get; set; }
         public string Nombre { get; set; }
-        public string Marca { get; set; }
-        public string Categoria { get; set; }
-        public float Precio { get; set; }
+        public Marca Marca { get; set; }
+        public Categoria Categoria { get; set; }
+        public decimal Precio { get; set; }
         public string Imagen { get; set; }
 
         [DisplayName("Descripción")] //para cambiar el nombre del campo en la vista
