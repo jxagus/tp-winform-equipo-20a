@@ -36,9 +36,9 @@ namespace negocio
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.Precio = Convert.ToDecimal(datos.Lector["Precio"]);
-                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    aux.Precio = Convert.ToDecimal(datos.Lector["Precio"]); 
 
+                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"]; //fijar
                     aux.Marca = new Marca();
                     aux.Marca.Descripcion = (string)datos.Lector["DescripcionMarca"];
 
@@ -60,4 +60,5 @@ namespace negocio
             }
         }
     }
+    //asdasd
 }

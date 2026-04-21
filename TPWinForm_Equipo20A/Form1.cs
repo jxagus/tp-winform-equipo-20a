@@ -49,6 +49,7 @@ namespace TPWinForm_Equipo20A
         {
             dgvLista.Columns["ImagenUrl"].Visible = false; //ocultamos la url
             
+            
         }
 
     }
