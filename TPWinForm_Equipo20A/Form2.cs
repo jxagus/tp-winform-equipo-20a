@@ -55,13 +55,20 @@ namespace TPWinForm_Equipo20A
                 nuevo.Codigo = txtCodigo.Text;
                 nuevo.Nombre = txtNombre.Text;
                 //nuevo.ImagenUrl = txtUrlImagen.Text;
+                nuevo.Imagenes.Clear(); // por si se entra en modificar en vez de agreagar
+                foreach (var item in cboImagenVistaPrevia.Items)
+                {
+                    Imagen aux = new Imagen();
+                    aux.UrlImagen = item.ToString();
+                    nuevo.Imagenes.Add(aux);
+                }
                 nuevo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 nuevo.Marca = (Marca)cboMarca.SelectedItem;
                 nuevo.Precio = decimal.Parse(txtPrecio.Text);
                 nuevo.Descripcion = txtDescripcion.Text;
                 
                 articulo.agregar(nuevo);
-                MessageBox.Show("Articulo agregado con exito");
+                MessageBox.Show("Articulo agregado con exito!");
                 Close();
             }
             catch (Exception ex)
@@ -71,15 +78,55 @@ namespace TPWinForm_Equipo20A
             }
         }
 
-        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            string url = txtUrlImagen.Text;
+            if (!string.IsNullOrEmpty(txtUrlImagen.Text))
+            {
+                cboImagenVistaPrevia.Items.Add(url);
+                cboImagenVistaPrevia.SelectedIndex = cboImagenVistaPrevia.Items.Count - 1;
+                txtUrlImagen.Clear();
+            }
+        }
+
+        private void cboImagenVistaPrevia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string url = cboImagenVistaPrevia.SelectedItem.ToString();
+            cargarImagen(url);
+        }
+
+        private void cargarImagen(string url)
         {
             try
             {
-                pbImagen.Load(txtUrlImagen.Text);
+                pbImagen.Load(url);
             }
-            catch(Exception ex) 
+            catch (Exception)
             {
-                pbImagen.Load("https://media.istockphoto.com/id/1055079680/vector/black-linear-photo-camera-like-no-image-available.jpg?s=612x612&w=0&k=20&c=P1DebpeMIAtXj_ZbVsKVvg-duuL0v9DlrOZUvPG6UJk=");
+                pbImagen.Load("https://img.ridingwarehouse.com/watermark/rs.php?path=-1.jpg&nw=455");
+            }
+        }
+
+        private void lblAgregado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (cboImagenVistaPrevia.SelectedIndex != -1)
+            {
+                int indice = cboImagenVistaPrevia.SelectedIndex;
+                cboImagenVistaPrevia.Items.RemoveAt(indice);
+                cargarImagen("");
+                if (cboImagenVistaPrevia.Items.Count > 0)
+                {
+                    cboImagenVistaPrevia.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay imagenes para eliminar");
             }
         }
     }

@@ -59,11 +59,36 @@ namespace negocio
 
                 throw ex;
             }
+            finally { conexion.Close(); }
         }
 
         public void setearParametro(string nombre, object valor)
         {
             comando.Parameters.AddWithValue(nombre, valor);
+        }
+
+        public void limpiarParametros()
+        {
+            comando.Parameters.Clear();
+        }
+
+        public int leerUltimoId()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                return int.Parse(comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally 
+            { 
+                conexion.Close(); 
+            }
         }
 
         public void cerrarConexion()

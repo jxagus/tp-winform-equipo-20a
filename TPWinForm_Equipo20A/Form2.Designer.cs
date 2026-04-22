@@ -48,7 +48,8 @@
             this.btnAgrModif = new System.Windows.Forms.Button();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
             this.lblAgregado = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboImagenVistaPrevia = new System.Windows.Forms.ComboBox();
+            this.btnBorrarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,7 +154,6 @@
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(200, 20);
             this.txtUrlImagen.TabIndex = 2;
-            this.txtUrlImagen.Leave += new System.EventHandler(this.txtUrlImagen_Leave);
             // 
             // txtPrecio
             // 
@@ -218,31 +218,46 @@
             this.btnAgregarImagen.TabIndex = 3;
             this.btnAgregarImagen.Text = "+";
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
             // lblAgregado
             // 
             this.lblAgregado.AutoSize = true;
             this.lblAgregado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgregado.Location = new System.Drawing.Point(472, 273);
+            this.lblAgregado.Location = new System.Drawing.Point(458, 274);
             this.lblAgregado.Name = "lblAgregado";
             this.lblAgregado.Size = new System.Drawing.Size(66, 13);
             this.lblAgregado.TabIndex = 18;
             this.lblAgregado.Text = "Vista Previa:";
+            this.lblAgregado.Click += new System.EventHandler(this.lblAgregado_Click);
             // 
-            // comboBox1
+            // cboImagenVistaPrevia
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(544, 270);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(128, 21);
-            this.comboBox1.TabIndex = 8;
+            this.cboImagenVistaPrevia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboImagenVistaPrevia.FormattingEnabled = true;
+            this.cboImagenVistaPrevia.Location = new System.Drawing.Point(524, 271);
+            this.cboImagenVistaPrevia.Name = "cboImagenVistaPrevia";
+            this.cboImagenVistaPrevia.Size = new System.Drawing.Size(128, 21);
+            this.cboImagenVistaPrevia.TabIndex = 8;
+            this.cboImagenVistaPrevia.SelectedIndexChanged += new System.EventHandler(this.cboImagenVistaPrevia_SelectedIndexChanged);
+            // 
+            // btnBorrarImagen
+            // 
+            this.btnBorrarImagen.Location = new System.Drawing.Point(655, 270);
+            this.btnBorrarImagen.Name = "btnBorrarImagen";
+            this.btnBorrarImagen.Size = new System.Drawing.Size(24, 23);
+            this.btnBorrarImagen.TabIndex = 19;
+            this.btnBorrarImagen.Text = "🗑️";
+            this.btnBorrarImagen.UseVisualStyleBackColor = true;
+            this.btnBorrarImagen.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 345);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnBorrarImagen);
+            this.Controls.Add(this.cboImagenVistaPrevia);
             this.Controls.Add(this.lblAgregado);
             this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.btnAgrModif);
@@ -296,6 +311,7 @@
         private System.Windows.Forms.Button btnAgrModif;
         private System.Windows.Forms.Button btnAgregarImagen;
         private System.Windows.Forms.Label lblAgregado;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboImagenVistaPrevia;
+        private System.Windows.Forms.Button btnBorrarImagen;
     }
 }
