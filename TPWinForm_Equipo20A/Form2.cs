@@ -55,7 +55,7 @@ namespace TPWinForm_Equipo20A
                 nuevo.Codigo = txtCodigo.Text;
                 nuevo.Nombre = txtNombre.Text;
                 //nuevo.ImagenUrl = txtUrlImagen.Text;
-                nuevo.Imagenes.Clear(); // por si se entra en modificar en vez de agreagar
+
                 foreach (var item in cboImagenVistaPrevia.Items)
                 {
                     Imagen aux = new Imagen();
