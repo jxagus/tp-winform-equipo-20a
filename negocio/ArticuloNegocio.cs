@@ -19,9 +19,9 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT A.Codigo, A.Nombre, A.Descripcion, A.Precio, " +
+                datos.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, " +
                              "M.Descripcion AS DescripcionMarca, " +
-                             "C.Descripcion AS DescripcionCategoria " +
+                             "C.Descripcion AS DescripcionCategoria, " +"M.Id AS IdMarca, C.Id AS IdCategoria "+
                              "FROM ARTICULOS A, MARCAS M, CATEGORIAS C " +
                              "WHERE A.IdMarca = M.Id " +
                              "AND A.IdCategoria = C.Id ");
@@ -34,6 +34,7 @@ namespace negocio
                 {
                     Articulo aux = new Articulo();
 
+                    aux.Id = (int)datos.Lector["Id"];
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
@@ -41,9 +42,11 @@ namespace negocio
 
                     //aux.ImagenUrl = (string)datos.Lector["ImagenUrl"]; //fijar
                     aux.Marca = new Marca();
+                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
                     aux.Marca.Descripcion = (string)datos.Lector["DescripcionMarca"];
 
                     aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.Lector["DescripcionCategoria"];
 
                     lista.Add(aux);

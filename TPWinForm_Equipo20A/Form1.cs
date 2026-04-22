@@ -62,7 +62,11 @@ namespace TPWinForm_Equipo20A
         {
             Articulo seleccionado;
             seleccionado = (Articulo)dgvLista.CurrentRow.DataBoundItem;
-            Form2 modificar = new Form2();
+
+            ImagenNegocio img = new ImagenNegocio();
+            seleccionado.Imagenes = img.listar(seleccionado.Id);
+
+            Form2 modificar = new Form2(seleccionado);
             modificar.ShowDialog();
         }
     }

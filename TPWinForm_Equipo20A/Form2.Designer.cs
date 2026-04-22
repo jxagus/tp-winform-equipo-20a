@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
@@ -50,6 +51,8 @@
             this.lblAgregado = new System.Windows.Forms.Label();
             this.cboImagenVistaPrevia = new System.Windows.Forms.ComboBox();
             this.btnBorrarImagen = new System.Windows.Forms.Button();
+            this.tTipBorarImagen = new System.Windows.Forms.ToolTip(this.components);
+            this.tTipAgregarImagen = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -195,9 +198,8 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Location = new System.Drawing.Point(254, 32);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(10, 13);
+            this.lblTitulo.Size = new System.Drawing.Size(0, 13);
             this.lblTitulo.TabIndex = 16;
-            this.lblTitulo.Text = " ";
             this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // btnAgrModif
@@ -206,17 +208,21 @@
             this.btnAgrModif.Name = "btnAgrModif";
             this.btnAgrModif.Size = new System.Drawing.Size(99, 23);
             this.btnAgrModif.TabIndex = 9;
-            this.btnAgrModif.Text = "A/M";
+            this.btnAgrModif.Text = "Confirmar";
             this.btnAgrModif.UseVisualStyleBackColor = true;
             this.btnAgrModif.Click += new System.EventHandler(this.btnAgrModif_Click);
             // 
             // btnAgregarImagen
             // 
+            this.btnAgregarImagen.AccessibleDescription = "";
+            this.btnAgregarImagen.AccessibleName = "";
             this.btnAgregarImagen.Location = new System.Drawing.Point(362, 137);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(20, 20);
             this.btnAgregarImagen.TabIndex = 3;
+            this.btnAgregarImagen.Tag = "";
             this.btnAgregarImagen.Text = "+";
+            this.tTipAgregarImagen.SetToolTip(this.btnAgregarImagen, "Agregar Imagen");
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
@@ -248,6 +254,7 @@
             this.btnBorrarImagen.Size = new System.Drawing.Size(24, 23);
             this.btnBorrarImagen.TabIndex = 19;
             this.btnBorrarImagen.Text = "🗑️";
+            this.tTipAgregarImagen.SetToolTip(this.btnBorrarImagen, "Eliminar Imagen");
             this.btnBorrarImagen.UseVisualStyleBackColor = true;
             this.btnBorrarImagen.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -313,5 +320,7 @@
         private System.Windows.Forms.Label lblAgregado;
         private System.Windows.Forms.ComboBox cboImagenVistaPrevia;
         private System.Windows.Forms.Button btnBorrarImagen;
+        private System.Windows.Forms.ToolTip tTipBorarImagen;
+        private System.Windows.Forms.ToolTip tTipAgregarImagen;
     }
 }

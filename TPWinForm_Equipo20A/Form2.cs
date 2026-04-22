@@ -14,9 +14,16 @@ namespace TPWinForm_Equipo20A
 {
     public partial class Form2 : Form
     {
+        private Articulo articulo = null;
         public Form2()
         {
             InitializeComponent();
+        }
+
+        public Form2(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
         }
 
         private void lblTitulo_Click(object sender, EventArgs e)
@@ -37,7 +44,33 @@ namespace TPWinForm_Equipo20A
             try
             {
                 cboCategoria.DataSource = categorianegocio.listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
                 cboMarca.DataSource = marcanegocio.listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
+
+                if (articulo != null)
+                {
+                    txtCodigo.Text=articulo.Codigo;
+                    txtNombre.Text=articulo.Nombre;
+
+                    if(articulo.Imagenes != null)
+                    {
+                        foreach (Imagen img in articulo.Imagenes)
+                        {
+                            cboImagenVistaPrevia.Items.Add(img.UrlImagen);
+                        }
+                        if(cboImagenVistaPrevia.Items.Count > 0)
+                            cboImagenVistaPrevia.SelectedIndex = 0;
+                    }
+                    
+
+                    cboCategoria.SelectedValue = articulo.Categoria.Id;
+                    cboMarca.SelectedValue = articulo.Marca.Id;
+                    txtPrecio.Text=articulo.Precio.ToString();
+                    txtDescripcion.Text=articulo.Descripcion;
+                }
             }
             catch (Exception ex)
             {
@@ -55,7 +88,7 @@ namespace TPWinForm_Equipo20A
                 nuevo.Codigo = txtCodigo.Text;
                 nuevo.Nombre = txtNombre.Text;
                 //nuevo.ImagenUrl = txtUrlImagen.Text;
-
+                nuevo.Imagenes.Clear(); // por si se entra en modificar en vez de agreagar
                 foreach (var item in cboImagenVistaPrevia.Items)
                 {
                     Imagen aux = new Imagen();
