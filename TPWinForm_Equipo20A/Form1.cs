@@ -31,7 +31,6 @@ namespace TPWinForm_Equipo20A
         {
 
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
@@ -76,6 +75,12 @@ namespace TPWinForm_Equipo20A
             Form2 modificar = new Form2(seleccionado);
             modificar.ShowDialog();
             cargar();
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            Form3 filtrar = new Form3();
+            filtrar.ShowDialog();
         }
     }
 }

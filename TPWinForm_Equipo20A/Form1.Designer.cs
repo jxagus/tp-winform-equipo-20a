@@ -31,16 +31,11 @@
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.tbBuscar = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
-            this.cbMarca = new System.Windows.Forms.ComboBox();
-            this.cbCategoria = new System.Windows.Forms.ComboBox();
-            this.lbCategoria = new System.Windows.Forms.Label();
-            this.lblMarca = new System.Windows.Forms.Label();
             this.pbImagen = new System.Windows.Forms.GroupBox();
-            this.tbBuscarAvanzado = new System.Windows.Forms.TextBox();
-            this.lblBuscarAvanzado = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.btnFiltrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,40 +66,6 @@
             this.lblBuscar.TabIndex = 2;
             this.lblBuscar.Text = "Buscar:";
             // 
-            // cbMarca
-            // 
-            this.cbMarca.FormattingEnabled = true;
-            this.cbMarca.Location = new System.Drawing.Point(78, 302);
-            this.cbMarca.Name = "cbMarca";
-            this.cbMarca.Size = new System.Drawing.Size(121, 21);
-            this.cbMarca.TabIndex = 3;
-            // 
-            // cbCategoria
-            // 
-            this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(78, 275);
-            this.cbCategoria.Name = "cbCategoria";
-            this.cbCategoria.Size = new System.Drawing.Size(121, 21);
-            this.cbCategoria.TabIndex = 4;
-            // 
-            // lbCategoria
-            // 
-            this.lbCategoria.AutoSize = true;
-            this.lbCategoria.Location = new System.Drawing.Point(17, 278);
-            this.lbCategoria.Name = "lbCategoria";
-            this.lbCategoria.Size = new System.Drawing.Size(55, 13);
-            this.lbCategoria.TabIndex = 5;
-            this.lbCategoria.Text = "Categoria:";
-            // 
-            // lblMarca
-            // 
-            this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(17, 305);
-            this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(40, 13);
-            this.lblMarca.TabIndex = 6;
-            this.lblMarca.Text = "Marca:";
-            // 
             // pbImagen
             // 
             this.pbImagen.Location = new System.Drawing.Point(693, 70);
@@ -113,22 +74,6 @@
             this.pbImagen.TabIndex = 7;
             this.pbImagen.TabStop = false;
             this.pbImagen.Text = "Imagen";
-            // 
-            // tbBuscarAvanzado
-            // 
-            this.tbBuscarAvanzado.Location = new System.Drawing.Point(329, 275);
-            this.tbBuscarAvanzado.Name = "tbBuscarAvanzado";
-            this.tbBuscarAvanzado.Size = new System.Drawing.Size(140, 20);
-            this.tbBuscarAvanzado.TabIndex = 8;
-            // 
-            // lblBuscarAvanzado
-            // 
-            this.lblBuscarAvanzado.AutoSize = true;
-            this.lblBuscarAvanzado.Location = new System.Drawing.Point(218, 278);
-            this.lblBuscarAvanzado.Name = "lblBuscarAvanzado";
-            this.lblBuscarAvanzado.Size = new System.Drawing.Size(105, 13);
-            this.lblBuscarAvanzado.TabIndex = 9;
-            this.lblBuscarAvanzado.Text = "Busqueda avanzada";
             // 
             // btnAgregar
             // 
@@ -159,22 +104,27 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Location = new System.Drawing.Point(18, 285);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.TabIndex = 13;
+            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(998, 370);
+            this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.lblBuscarAvanzado);
-            this.Controls.Add(this.tbBuscarAvanzado);
             this.Controls.Add(this.pbImagen);
-            this.Controls.Add(this.lblMarca);
-            this.Controls.Add(this.lbCategoria);
-            this.Controls.Add(this.cbCategoria);
-            this.Controls.Add(this.cbMarca);
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.tbBuscar);
             this.Controls.Add(this.dgvLista);
@@ -193,16 +143,11 @@
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.TextBox tbBuscar;
         private System.Windows.Forms.Label lblBuscar;
-        private System.Windows.Forms.ComboBox cbMarca;
-        private System.Windows.Forms.ComboBox cbCategoria;
-        private System.Windows.Forms.Label lbCategoria;
-        private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.GroupBox pbImagen;
-        private System.Windows.Forms.TextBox tbBuscarAvanzado;
-        private System.Windows.Forms.Label lblBuscarAvanzado;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnFiltrar;
     }
 }
 
