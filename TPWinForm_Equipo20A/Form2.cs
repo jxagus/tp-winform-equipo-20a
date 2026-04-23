@@ -85,6 +85,17 @@ namespace TPWinForm_Equipo20A
 
         private void btnAgrModif_Click(object sender, EventArgs e)
         {
+            
+            if (hayError())
+            {
+                MessageBox.Show("Error/es Detectado/s.", "Error de cargado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }else if (cboImagenVistaPrevia.Items.Count < 1)
+            {
+                MessageBox.Show("El articulo debe tener al menos 1 (Una) imagen subida.", "Error de cargado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
@@ -162,18 +173,143 @@ namespace TPWinForm_Equipo20A
         {
             if (cboImagenVistaPrevia.SelectedIndex != -1)
             {
-                int indice = cboImagenVistaPrevia.SelectedIndex;
-                cboImagenVistaPrevia.Items.RemoveAt(indice);
-                cargarImagen("");
-                if (cboImagenVistaPrevia.Items.Count > 0)
+                DialogResult respuesta = MessageBox.Show("¿Esta seguro de eliminar esta imagen?","", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
                 {
-                    cboImagenVistaPrevia.SelectedIndex = 0;
+                    int indice = cboImagenVistaPrevia.SelectedIndex;
+                    cboImagenVistaPrevia.Items.RemoveAt(indice);
+                    cargarImagen("");
+                    if (cboImagenVistaPrevia.Items.Count > 0)
+                    {
+                        cboImagenVistaPrevia.SelectedIndex = 0;
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No hay imagenes para eliminar");
+                MessageBox.Show("No hay imagenes para eliminar","", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
+        }
+
+        private void txtCodigo_Validating(object sender, CancelEventArgs e)
+        {
+            if (validarCodigoRepetido())
+            {
+                errorProvider1.SetError(txtCodigo, "No pueden haber Codigos Iguales");
+                return;
+            }
+            if (estaVacio(txtCodigo))
+            {
+                errorProvider1.SetError(txtCodigo, "No pueden haber campos vacios");
+                return;
+            }
+            errorProvider1.SetError(txtCodigo, "");
+        }
+
+        private void txtNombre_Validating(object sender, CancelEventArgs e)
+        {
+            if (estaVacio(txtNombre))
+            {
+                errorProvider1.SetError(txtNombre, "No pueden haber campos vacios");
+                return;
+            }
+
+            errorProvider1.SetError(txtNombre, "");
+        }
+
+        private void txtPrecio_Validating(object sender, CancelEventArgs e)
+        {
+            if (estaVacio(txtPrecio))
+            {
+                errorProvider1.SetError(txtPrecio, "No pueden haber campos vacios");
+                return;
+            }
+
+            if (!validarPrecio())
+            {
+                errorProvider1.SetError(txtPrecio, "Precio Ingresado Invalido");
+                return;
+            }
+
+            errorProvider1.SetError(txtPrecio, "");
+        }
+
+        private void txtDescripcion_Validating(object sender, CancelEventArgs e)
+        {
+            if (estaVacio(txtDescripcion))
+            {
+                errorProvider1.SetError(txtDescripcion, "No pueden haber campos vacios");
+                return;
+            }
+
+            errorProvider1.SetError(txtDescripcion, "");
+        }
+
+        bool validarCodigoRepetido()
+        {
+            ArticuloNegocio datos = new ArticuloNegocio();
+            List<Articulo> todos = datos.listar();
+            string codigoIngresado = txtCodigo.Text.Trim();
+            foreach (Articulo aux in todos)
+            {
+                if (aux.Codigo.ToUpper() == codigoIngresado.ToUpper())
+                {
+                    if (articulo == null || aux.Id != articulo.Id)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+        bool estaVacio(TextBox txt)
+        {
+            if (string.IsNullOrEmpty(txt.Text))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        bool validarPrecio()
+        {
+            if (!decimal.TryParse(txtPrecio.Text, out decimal precio) || precio < 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        private bool hayError()
+        {
+            bool error = false;
+
+            List<Control> camposVacios = new List<Control> {txtCodigo, txtNombre, txtDescripcion, txtPrecio};
+
+            foreach (Control aux in camposVacios)
+            {
+                if(string.IsNullOrEmpty(aux.Text)){
+                    errorProvider1.SetError(aux, "No pueden haber campos vacios");
+                    error = true;
+                }
+                else
+                {
+                    errorProvider1.SetError(aux, "");
+                }
+            }
+            if (!validarPrecio())
+            {
+                errorProvider1.SetError(txtPrecio, "Precio Ingresado Invalido");
+                error = true;
+            }
+            if (validarCodigoRepetido())
+            {
+                errorProvider1.SetError(txtCodigo, "No pueden haber Codigos Iguales");
+                error = true;
+            }
+            return error;
         }
     }
 }

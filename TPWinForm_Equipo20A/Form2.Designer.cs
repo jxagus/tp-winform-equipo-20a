@@ -52,7 +52,9 @@
             this.btnBorrarImagen = new System.Windows.Forms.Button();
             this.tTipBorarImagen = new System.Windows.Forms.ToolTip(this.components);
             this.tTipAgregarImagen = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -142,6 +144,7 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(200, 20);
             this.txtDescripcion.TabIndex = 7;
+            this.txtDescripcion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescripcion_Validating);
             // 
             // txtNombre
             // 
@@ -149,6 +152,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(200, 20);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // txtUrlImagen
             // 
@@ -163,6 +167,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(200, 20);
             this.txtPrecio.TabIndex = 6;
+            this.txtPrecio.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrecio_Validating);
             // 
             // txtCodigo
             // 
@@ -170,6 +175,7 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(200, 20);
             this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodigo_Validating);
             // 
             // btnCancelar
             // 
@@ -198,7 +204,7 @@
             this.btnAgrModif.Name = "btnAgrModif";
             this.btnAgrModif.Size = new System.Drawing.Size(99, 23);
             this.btnAgrModif.TabIndex = 9;
-            this.btnAgrModif.Text = "Confirmar";
+            this.btnAgrModif.Text = "A/M";
             this.btnAgrModif.UseVisualStyleBackColor = true;
             this.btnAgrModif.Click += new System.EventHandler(this.btnAgrModif_Click);
             // 
@@ -248,6 +254,11 @@
             this.btnBorrarImagen.UseVisualStyleBackColor = true;
             this.btnBorrarImagen.Click += new System.EventHandler(this.button1_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkRate = 150;
+            this.errorProvider1.ContainerControl = this;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,6 +291,7 @@
             this.Text = "Carga de Datos";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,5 +322,6 @@
         private System.Windows.Forms.Button btnBorrarImagen;
         private System.Windows.Forms.ToolTip tTipBorarImagen;
         private System.Windows.Forms.ToolTip tTipAgregarImagen;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
