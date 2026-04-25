@@ -153,5 +153,26 @@ namespace TPWinForm_Equipo20A
                 MessageBox.Show("Error al filtrar: " + ex.Message);
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado;
+            try
+            {
+                DialogResult repuesta = MessageBox.Show("Confirmar el DELETE del articulo", "Eliminando",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                if (repuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgvLista.CurrentRow.DataBoundItem;
+                    negocio.Eliminar(seleccionado.Id);
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
