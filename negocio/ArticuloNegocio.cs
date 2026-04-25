@@ -19,51 +19,50 @@ namespace negocio
 
             try
             {
-                /*datos.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, " +
-                             "M.Descripcion AS DescripcionMarca, " +
-                             "C.Descripcion AS DescripcionCategoria, " +
-                             "M.Id AS IdMarca, C.Id AS IdCategoria "+
-                             "FROM ARTICULOS A, MARCAS M, CATEGORIAS C " +
-                             "WHERE A.IdMarca = M.Id " +
-                             "AND A.IdCategoria = C.Id ");*/
                 datos.setearConsulta(
-                "SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio," +
-                "(SELECT TOP 1 I.ImagenUrl FROM IMAGENES I WHERE I.IdArticulo = A.Id ORDER BY I.Id) AS ImagenUrl," +
-                "M.Descripcion AS DescripcionMarca," +
-                "C.Descripcion AS DescripcionCategoria," +
-                "M.Id AS IdMarca, C.Id AS IdCategoria " +
-                "FROM ARTICULOS A " +
-                "INNER JOIN MARCAS M ON A.IdMarca = M.Id " +
-                "INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id");
+                    "SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, " +
+                    "M.Descripcion AS DescripcionMarca, " +
+                    "C.Descripcion AS DescripcionCategoria, " +
+                    "M.Id AS IdMarca, C.Id AS IdCategoria " +
+                    "FROM ARTICULOS A " +
+                    "LEFT JOIN MARCAS M ON A.IdMarca = M.Id " +
+                    "LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id");
 
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Precio = Convert.ToDecimal(datos.Lector["Precio"]);
 
-                    aux.Imagenes = new List<Imagen>();
-
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                    {
-                        Imagen img = new Imagen();
-                        img.UrlImagen = datos.Lector["ImagenUrl"].ToString();
-
-                        aux.Imagenes.Add(img);
-                    }
                     aux.Marca = new Marca();
-                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
-                    aux.Marca.Descripcion = (string)datos.Lector["DescripcionMarca"];
+                    if (!(datos.Lector["IdMarca"] is DBNull))
+                    {
+                        aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                        aux.Marca.Descripcion = (string)datos.Lector["DescripcionMarca"];
+                    }
+                    else
+                    {
+                        aux.Marca.Descripcion = "Sin Marca";
+                    }
 
-                    aux.Categoria = new Categoria();
-                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
-                    aux.Categoria.Descripcion = (string)datos.Lector["DescripcionCategoria"];
+                        aux.Categoria = new Categoria();
+                    if (!(datos.Lector["IdCategoria"] is DBNull))
+                    {
+                        aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                        aux.Categoria.Descripcion = (string)datos.Lector["DescripcionCategoria"];
+                    }
+                    else
+                    {
+                        aux.Categoria.Descripcion = "Sin Categoría";
+                    }
+
+                    ImagenNegocio imgNegocio = new ImagenNegocio();
+                    aux.Imagenes = imgNegocio.listar(aux.Id);
 
                     lista.Add(aux);
                 }
@@ -78,6 +77,7 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        
         }
 
         public void agregar(Articulo nuevo)
