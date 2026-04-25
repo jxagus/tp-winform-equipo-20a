@@ -28,6 +28,10 @@ namespace TPWinForm_Equipo20A
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            cbCampo.Items.Add("Precio");
+            cbCampo.Items.Add("Nombre");
+            cbCampo.Items.Add("Categoria");
+            cbCampo.Items.Add("Marca");
             ImagenNegocio img = new ImagenNegocio();
             try
             {
