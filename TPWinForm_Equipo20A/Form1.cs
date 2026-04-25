@@ -82,30 +82,6 @@ namespace TPWinForm_Equipo20A
             cargar();
         }
 
-        private void tbBuscar_TextChanged(object sender, EventArgs e)
-        {
-            List<Articulo> listaFiltrada;
-            string filtro = tbBuscar.Text;
-
-            if (filtro.Length >= 2)
-            {
-                listaFiltrada = listaArticulo.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()));
-            }
-            else
-            {
-                listaFiltrada = listaArticulo;
-            }
-
-
-            dgvLista.DataSource = null;
-            dgvLista.DataSource = listaFiltrada;
-            ocultarColumnas();
-        }
-
-        private void lblBusquedaAvanzada_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void cbCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -127,9 +103,16 @@ namespace TPWinForm_Equipo20A
 
         private void btnBusquedaAvanzada_Click(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
+            
+            if (cbCampo.SelectedItem == null || cbCriterio.SelectedItem == null)
+            {
+                MessageBox.Show("Antes de realizar la busqueda, ingresar campo y criterio.");
+                return; 
+            }
+
             try
             {
+                ArticuloNegocio negocio = new ArticuloNegocio();
                 string campo = cbCampo.SelectedItem.ToString();
                 string criterio = cbCriterio.SelectedItem.ToString();
                 string filtro = txtBusquedaAvanzada.Text;
@@ -139,6 +122,35 @@ namespace TPWinForm_Equipo20A
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            if (listaArticulo == null) return;
+
+            try
+            {
+                string filtro = txtBuscar.Text;
+                List<Articulo> listaFiltrada;
+
+                if (filtro.Length >= 2)
+                {
+                    listaFiltrada = listaArticulo.FindAll(x => x.Nombre != null &&  x.Nombre.ToUpper().Contains(filtro.ToUpper()));
+                }
+                else
+                {
+
+                    listaFiltrada = listaArticulo;
+                }
+
+                dgvLista.DataSource = null;
+                dgvLista.DataSource = listaFiltrada;
+                ocultarColumnas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar: " + ex.Message);
             }
         }
     }

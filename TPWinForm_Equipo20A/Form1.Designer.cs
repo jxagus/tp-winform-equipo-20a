@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.tbBuscar = new System.Windows.Forms.TextBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -59,13 +59,13 @@
             this.dgvLista.TabIndex = 0;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             // 
-            // tbBuscar
+            // txtBuscar
             // 
-            this.tbBuscar.Location = new System.Drawing.Point(66, 38);
-            this.tbBuscar.Name = "tbBuscar";
-            this.tbBuscar.Size = new System.Drawing.Size(108, 20);
-            this.tbBuscar.TabIndex = 1;
-            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
+            this.txtBuscar.Location = new System.Drawing.Point(66, 38);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(108, 20);
+            this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // lblBuscar
             // 
@@ -169,7 +169,6 @@
             this.lblBusquedaAvanzada.Size = new System.Drawing.Size(35, 13);
             this.lblBusquedaAvanzada.TabIndex = 25;
             this.lblBusquedaAvanzada.Text = "Filtro: ";
-            this.lblBusquedaAvanzada.Click += new System.EventHandler(this.lblBusquedaAvanzada_Click);
             // 
             // txtBusquedaAvanzada
             // 
@@ -228,7 +227,7 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.lblBuscar);
-            this.Controls.Add(this.tbBuscar);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dgvLista);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -244,7 +243,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvLista;
-        private System.Windows.Forms.TextBox tbBuscar;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
