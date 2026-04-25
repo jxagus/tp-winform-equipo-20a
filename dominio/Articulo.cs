@@ -18,14 +18,24 @@ namespace dominio
         public decimal Precio { get; set; }
 
         //public string ImagenUrl { get; set; }
-        //nota: la comente para poder guardar multiples imagenes, quizas tambien sirva a la hora de mostrarlas
         public List<Imagen> Imagenes { get; set; } = new List<Imagen>();
 
-        [DisplayName("Descripción")] //para cambiar el nombre del campo en la vista
+        [DisplayName("Descripción")] 
         public string Descripcion { get; set; }
+        [DisplayName("Categoría")]
+        public string NombreCategoria
+        {
+            get { return (Categoria != null && Categoria.Descripcion != null) ? Categoria.Descripcion : "Sin Categoría"; }
+        }
+
+        [DisplayName("Marca")]
+        public string NombreMarca
+        {
+            get { return (Marca != null && Marca.Descripcion != null) ? Marca.Descripcion : "Sin Marca"; }
+        }
 
 
-  
+
 
     }
 }
