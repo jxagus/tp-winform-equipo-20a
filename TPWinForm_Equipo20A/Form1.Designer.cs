@@ -38,6 +38,13 @@
             this.cboImagenVistaPrevia = new System.Windows.Forms.ComboBox();
             this.lblAgregado = new System.Windows.Forms.Label();
             this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.lblCriterio = new System.Windows.Forms.Label();
+            this.cbCriterio = new System.Windows.Forms.ComboBox();
+            this.lblBusquedaAvanzada = new System.Windows.Forms.Label();
+            this.txtBusquedaAvanzada = new System.Windows.Forms.TextBox();
+            this.btnBusquedaAvanzada = new System.Windows.Forms.Button();
+            this.lblCampo = new System.Windows.Forms.Label();
+            this.cbCampo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
@@ -136,12 +143,83 @@
             this.pbImagen.TabIndex = 21;
             this.pbImagen.TabStop = false;
             // 
+            // lblCriterio
+            // 
+            this.lblCriterio.AutoSize = true;
+            this.lblCriterio.Location = new System.Drawing.Point(218, 307);
+            this.lblCriterio.Name = "lblCriterio";
+            this.lblCriterio.Size = new System.Drawing.Size(45, 13);
+            this.lblCriterio.TabIndex = 23;
+            this.lblCriterio.Text = "Criterio: ";
+            // 
+            // cbCriterio
+            // 
+            this.cbCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCriterio.FormattingEnabled = true;
+            this.cbCriterio.Location = new System.Drawing.Point(269, 303);
+            this.cbCriterio.Name = "cbCriterio";
+            this.cbCriterio.Size = new System.Drawing.Size(121, 21);
+            this.cbCriterio.TabIndex = 24;
+            // 
+            // lblBusquedaAvanzada
+            // 
+            this.lblBusquedaAvanzada.AutoSize = true;
+            this.lblBusquedaAvanzada.Location = new System.Drawing.Point(413, 307);
+            this.lblBusquedaAvanzada.Name = "lblBusquedaAvanzada";
+            this.lblBusquedaAvanzada.Size = new System.Drawing.Size(35, 13);
+            this.lblBusquedaAvanzada.TabIndex = 25;
+            this.lblBusquedaAvanzada.Text = "Filtro: ";
+            this.lblBusquedaAvanzada.Click += new System.EventHandler(this.lblBusquedaAvanzada_Click);
+            // 
+            // txtBusquedaAvanzada
+            // 
+            this.txtBusquedaAvanzada.Location = new System.Drawing.Point(454, 304);
+            this.txtBusquedaAvanzada.Name = "txtBusquedaAvanzada";
+            this.txtBusquedaAvanzada.Size = new System.Drawing.Size(121, 20);
+            this.txtBusquedaAvanzada.TabIndex = 26;
+            // 
+            // btnBusquedaAvanzada
+            // 
+            this.btnBusquedaAvanzada.Location = new System.Drawing.Point(589, 292);
+            this.btnBusquedaAvanzada.Name = "btnBusquedaAvanzada";
+            this.btnBusquedaAvanzada.Size = new System.Drawing.Size(100, 40);
+            this.btnBusquedaAvanzada.TabIndex = 27;
+            this.btnBusquedaAvanzada.Text = "Busqueda avanzada";
+            this.btnBusquedaAvanzada.UseVisualStyleBackColor = true;
+            this.btnBusquedaAvanzada.Click += new System.EventHandler(this.btnBusquedaAvanzada_Click);
+            // 
+            // lblCampo
+            // 
+            this.lblCampo.AutoSize = true;
+            this.lblCampo.Location = new System.Drawing.Point(17, 306);
+            this.lblCampo.Name = "lblCampo";
+            this.lblCampo.Size = new System.Drawing.Size(46, 13);
+            this.lblCampo.TabIndex = 28;
+            this.lblCampo.Text = "Campo: ";
+            // 
+            // cbCampo
+            // 
+            this.cbCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCampo.FormattingEnabled = true;
+            this.cbCampo.Location = new System.Drawing.Point(69, 304);
+            this.cbCampo.Name = "cbCampo";
+            this.cbCampo.Size = new System.Drawing.Size(121, 21);
+            this.cbCampo.TabIndex = 29;
+            this.cbCampo.SelectedIndexChanged += new System.EventHandler(this.cbCampo_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(998, 370);
+            this.Controls.Add(this.cbCampo);
+            this.Controls.Add(this.lblCampo);
+            this.Controls.Add(this.btnBusquedaAvanzada);
+            this.Controls.Add(this.txtBusquedaAvanzada);
+            this.Controls.Add(this.lblBusquedaAvanzada);
+            this.Controls.Add(this.cbCriterio);
+            this.Controls.Add(this.lblCriterio);
             this.Controls.Add(this.cboImagenVistaPrevia);
             this.Controls.Add(this.lblAgregado);
             this.Controls.Add(this.pbImagen);
@@ -175,6 +253,13 @@
         private System.Windows.Forms.ComboBox cboImagenVistaPrevia;
         private System.Windows.Forms.Label lblAgregado;
         private System.Windows.Forms.PictureBox pbImagen;
+        private System.Windows.Forms.Label lblCriterio;
+        private System.Windows.Forms.ComboBox cbCriterio;
+        private System.Windows.Forms.Label lblBusquedaAvanzada;
+        private System.Windows.Forms.TextBox txtBusquedaAvanzada;
+        private System.Windows.Forms.Button btnBusquedaAvanzada;
+        private System.Windows.Forms.Label lblCampo;
+        private System.Windows.Forms.ComboBox cbCampo;
     }
 }
 

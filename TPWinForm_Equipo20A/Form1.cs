@@ -29,6 +29,10 @@ namespace TPWinForm_Equipo20A
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            cbCampo.Items.Add("Precio");
+            cbCampo.Items.Add("Nombre");
+            cbCampo.Items.Add("Categoria");
+            cbCampo.Items.Add("Marca");
         }
 
         private void cargar()
@@ -96,6 +100,46 @@ namespace TPWinForm_Equipo20A
             dgvLista.DataSource = null;
             dgvLista.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void lblBusquedaAvanzada_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cbCampo.SelectedItem.ToString();
+            if (opcion == "Precio")
+            {
+                cbCriterio.Items.Clear();
+                cbCriterio.Items.Add("Mayor a");
+                cbCriterio.Items.Add("Menor a");
+            }
+            else
+            {
+                cbCriterio.Items.Clear();
+                cbCriterio.Items.Add("Comienza con");
+                cbCriterio.Items.Add("Termina con");
+                cbCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnBusquedaAvanzada_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                string campo = cbCampo.SelectedItem.ToString();
+                string criterio = cbCriterio.SelectedItem.ToString();
+                string filtro = txtBusquedaAvanzada.Text;
+                dgvLista.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
