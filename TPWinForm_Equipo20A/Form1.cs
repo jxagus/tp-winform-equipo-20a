@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.IO;
 using System.Windows.Forms;
 using dominio;
 using negocio;
@@ -47,8 +49,6 @@ namespace TPWinForm_Equipo20A
         {
 
         }
-
-
 
         private void cargar()
         {
@@ -128,8 +128,11 @@ namespace TPWinForm_Equipo20A
             {
                 pbImagen.Load(url);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                //Nota: En la debe solo hay 2 imagenes que fincionan y otra esta restringida por su pagina y no la puede leer la app
+                //agregue la linea de abajo para que vean la salida de la app que les dice que las url estan prohibidas o desparecidas o etc
+                Console.WriteLine("Error crítico de imagen: " + ex.Message);
                 pbImagen.Load("https://img.ridingwarehouse.com/watermark/rs.php?path=-1.jpg&nw=455");
             }
         }
