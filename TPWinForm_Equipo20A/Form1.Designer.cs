@@ -55,6 +55,7 @@
             this.dgvLista.Location = new System.Drawing.Point(18, 70);
             this.dgvLista.MultiSelect = false;
             this.dgvLista.Name = "dgvLista";
+            this.dgvLista.ReadOnly = true;
             this.dgvLista.Size = new System.Drawing.Size(645, 195);
             this.dgvLista.TabIndex = 0;
             this.dgvLista.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLista_CellFormatting);
@@ -62,7 +63,6 @@
             // 
             // txtBuscar
             // 
-
             this.txtBuscar.Location = new System.Drawing.Point(66, 38);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(108, 20);
@@ -215,7 +215,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
-
             this.ClientSize = new System.Drawing.Size(998, 370);
             this.Controls.Add(this.cbCampo);
             this.Controls.Add(this.lblCampo);
